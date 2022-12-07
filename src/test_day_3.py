@@ -30,6 +30,16 @@ class Tests(unittest.TestCase):
       self.assertEqual(map_to_priority('Y'), 51, "Mapped to incorrect priority.")
       self.assertEqual(map_to_priority('Z'), 52, "Mapped to incorrect priority.")
 
+   def test_find_common_element_in_group(self):
+      self.assertEqual(find_common_element_in_group(
+         'vJrwpWtwJgWrhcsFMMfFFhFp'
+         , 'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL'
+         , 'PmmdzqPrVvPwwTWBwg'), 'r', "Incorrect common element found in group.")
+      self.assertEqual(find_common_element_in_group(
+         'wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn'
+         , 'ttgJtRGJQctTZtZT'
+         , 'CrZsJsPPZsGzwwsLwLmpwMDw'), 'Z', "Incorrect common element found in group.")
+
 
 if __name__ == '__main__':
    unittest.main()
