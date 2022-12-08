@@ -1,8 +1,52 @@
+def is_section_contained_in_section(s1, s2):
+   for e in s1:
+      if e not in s2:
+         return False
+
+   return True
+
+
+def expand_list(to_expand):
+
+   if '-' not in to_expand:
+      lower = upper = int(to_expand)
+   else:
+      lower, upper = to_expand.strip().split('-')
+
+      if int(lower) > int(upper):
+         print(lower,upper)
+         raise Exception("Lower bound of index cannot be greater than upper bound.")
+
+   return list(range(int(lower), int(upper) + 1))
+
+
+def day_4_part_1_answer(input):
+
+   rows_processed = 0
+   count = 0
+
+   for l in input:
+      rows_processed += 1
+      first, second = l.strip().split(',')
+
+      print(l)
+
+      ex_1 = expand_list(first)
+      ex_2 = expand_list(second)
+      if is_section_contained_in_section(ex_1, ex_2) or \
+         is_section_contained_in_section(ex_2, ex_1):
+         count += 1
+
+   print(f"{rows_processed} rows processed. {count} fully overlapping sections found.")
 
 
 def main():
-   pass
+   
+   # open the data file
+   with open('.\data\data.txt', 'r') as f:
+      all_data = f.readlines()
 
+   day_4_part_1_answer(all_data)
 
 
 
