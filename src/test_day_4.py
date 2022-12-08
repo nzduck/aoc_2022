@@ -55,6 +55,16 @@ class Tests(unittest.TestCase):
       self.assertRaises(Exception, expand_list, input, msg="Input format incorrect.")
 
 
+   def test_lists_intersect(self):
+      l1 = [1, 2, 3]
+      l2 = [3, 4, 5]
+      self.assertTrue(lists_intersect(l1, l2), "Lists do not intersect, but should.")
+
+      l1 = [1, 2, 3]
+      l2 = [4, 5, 6]
+      self.assertFalse(lists_intersect(l1, l2), "Lists intersect, but should not.")
+
+
 
 if __name__ == '__main__':
    unittest.main()

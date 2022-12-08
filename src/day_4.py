@@ -29,8 +29,6 @@ def day_4_part_1_answer(input):
       rows_processed += 1
       first, second = l.strip().split(',')
 
-      print(l)
-
       ex_1 = expand_list(first)
       ex_2 = expand_list(second)
       if is_section_contained_in_section(ex_1, ex_2) or \
@@ -40,6 +38,29 @@ def day_4_part_1_answer(input):
    print(f"{rows_processed} rows processed. {count} fully overlapping sections found.")
 
 
+def day_4_part_2_answer(input):
+
+   rows_processed = 0
+   count = 0
+
+   for l in input:
+      rows_processed += 1
+      first, second = l.strip().split(',')
+
+      ex_1 = expand_list(first)
+      ex_2 = expand_list(second)
+
+      if lists_intersect(ex_1, ex_2):
+         count += 1
+
+   print(f"{rows_processed} rows processed. {count} intersecting sections found.")
+
+
+def lists_intersect(l1, l2):
+   result =  [value for value in l1 if value in l2]
+   return result != []
+
+
 def main():
    
    # open the data file
@@ -47,7 +68,8 @@ def main():
       all_data = f.readlines()
 
    day_4_part_1_answer(all_data)
-
+   day_4_part_2_answer(all_data)
+   
 
 
 if __name__ == '__main__':
