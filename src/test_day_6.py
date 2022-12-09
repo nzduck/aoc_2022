@@ -4,7 +4,7 @@ from day_6 import *
 
 class Tests(unittest.TestCase):
    
-   def test_find_marker_in_buffer(self):
+   def test_find_packet_marker_in_buffer(self):
       param_list = [("bvwbjplbgvbhsrlpgdmjqwftvncz", 5)
          , ("nppdvjthqldpwncqszvftbrmjlhg", 6)
          , ("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 10)
@@ -12,7 +12,7 @@ class Tests(unittest.TestCase):
 
       for p1, p2 in param_list:
             with self.subTest():
-               result = find_marker_in_buffer(p1)
+               result = find_packet_marker_in_buffer(p1)
                self.assertEqual(result, p2, "Marker was not found in correct position.")
 
 
@@ -24,6 +24,10 @@ class Tests(unittest.TestCase):
       remove_front_of_list(l1, to_remove_to)
 
       self.assertEqual(l1, expected_result, "Lists are not the same.")
+
+   
+   def test_find_message_marker_in_buffer(self):
+      pass
 
 
 if __name__ == '__main__':

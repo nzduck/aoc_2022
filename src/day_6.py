@@ -1,5 +1,4 @@
-def find_marker_in_buffer(buff):
-   print(buff)
+def find_packet_marker_in_buffer(buff):
    count = 0
    seen = []
 
@@ -23,7 +22,7 @@ def remove_front_of_list(l1, item_to_remove_to):
 
 
 def day_6_part_1(data):
-   pos = find_marker_in_buffer(data)
+   pos = find_packet_marker_in_buffer(data)
 
    print(f"Start-of-packet marker detected at position {pos}.")
 
