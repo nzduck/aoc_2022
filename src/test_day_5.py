@@ -7,11 +7,13 @@ class Tests(unittest.TestCase):
    def test_move_elem(self):
       l1 = [1,2,3,4]
       l2 = [6,7,8,9]
+      expected_l1 = [1,2]
+      expected_l2 = [6,7,8,9,4,3]
       
       move_elem(l1, l2, 2)
 
-      self.assertEqual(l1, [1,2], "From lists are not equal.")
-      self.assertEqual(l2, [6,7,8,9,4,3], "Destination lists are not equal.")
+      self.assertEqual(l1, expected_l1, "From lists are not equal.")
+      self.assertEqual(l2, expected_l2, "Destination lists are not equal.")
 
 
    def test_split_command(self):
@@ -36,6 +38,18 @@ class Tests(unittest.TestCase):
       expected = "370"
 
       self.assertEqual(generate_code(d), expected, "Generated code does not equal expected code.")
+
+
+   def test_move_elem_multiple(self):
+      l1 = [1,2,3,4]
+      l2 = [6,7,8,9]
+      expected_l1 = [1,2]
+      expected_l2 = [6,7,8,9,3,4]
+
+      move_elem_multiple(l1, l2, 2)
+
+      self.assertEqual(l1, expected_l1, "From lists are not equal.")
+      self.assertEqual(l2, expected_l2, "Destination lists are not equal.")
 
 
 if __name__ == '__main__':

@@ -18,6 +18,12 @@ def move_elem(l1, l2, num):
       l2.append(l1.pop())
 
 
+def move_elem_multiple(l1, l2, num):
+   s = l1[-num:]
+   del l1[-num:]
+   l2.extend(s)
+
+
 def split_command(c):
    c1 = c.split(' ')
    num = int(c1[1])
@@ -36,29 +42,26 @@ def generate_code(map):
    return ret
 
 
-def day_5_part_1_answer(all_data):
-
-   map = init_map()
-
+def day_5_part_1_answer(map, all_data):
    count = 0
    for l in all_data:
       if l.startswith('move '):
          count += 1
-
-         print(l)
          t = split_command(l.strip()) 
-
-         print(map.get(t[1]), map.get(t[2]))
          move_elem(map.get(t[1]), map.get(t[2]), t[0])
-         print(map.get(t[1]), map.get(t[2]))
-
-         print()
 
    print(f"{count} records processed. Code is {generate_code(map)}")
 
 
-def day_5_part_2_answer(all_data):
-   pass
+def day_5_part_2_answer(map, all_data):
+   count = 0
+   for l in all_data:
+      if l.startswith('move '):
+         count += 1
+         t = split_command(l.strip()) 
+         move_elem_multiple(map.get(t[1]), map.get(t[2]), t[0])
+
+   print(f"{count} records processed. Code is {generate_code(map)}")
 
 
 def main():
@@ -67,8 +70,8 @@ def main():
    with open('.\data\data.txt', 'r') as f:
       all_data = f.readlines()
 
-   day_5_part_1_answer(all_data)
-   day_5_part_2_answer(all_data)
+   day_5_part_1_answer(init_map(), all_data)
+   day_5_part_2_answer(init_map(), all_data)
    
 
 
